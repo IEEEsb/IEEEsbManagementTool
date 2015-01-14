@@ -1,0 +1,36 @@
+﻿<Page x:Class="IEEEsbUserManagement.Views.LogViewer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:IEEEsbUserManagement.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="1100"
+	Title="LogViewer">
+    <Page.Resources>
+        <vm:LogViewModel x:Key="LogViewModel"/>
+    </Page.Resources>
+    <Grid DataContext="{StaticResource LogViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="LogWindow" Width="1000" Margin="20" ItemsSource="{Binding Log.FullLog}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Timestamp}" Margin="5"/>
+                        <TextBlock Text="{Binding Type}" Margin="5"/>
+                        <TextBlock Text="{Binding Subtype}" Margin="5"/>
+                        <TextBlock Text="{Binding Message}" Margin="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="UpdateLog" Margin="20" Height="110" Width="250" Grid.Row="1" Click="UpdateLog_Click">
+            <Button.Content>
+                <TextBlock Text="Actualizar" FontSize="32" FontWeight="Bold" Margin="10"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>

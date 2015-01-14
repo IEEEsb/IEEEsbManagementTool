@@ -1,0 +1,60 @@
+﻿<Page x:Class="IEEEsbUserManagement.Views.NewUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:IEEEsbUserManagement.ViewModel"
+        xmlns:converters="clr-namespace:IEEEsbUserManagement.Converters"
+        Title="IEEEsb User Management" Background="White">
+    <Page.Resources>
+        <vm:NewUserViewModel x:Key="NewUserViewModel"/>
+        <converters:BooleanToVisibility x:Key="BooleanToVisibility"/>
+        <Style x:Key="Textblock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="32"/>
+        </Style>
+        <Style x:Key="Textbox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+    </Page.Resources>
+    <Grid DataContext="{StaticResource NewUserViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="300" Margin="50,20" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Text="Nombre de Usuario" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="Username" Text="{Binding CurrentUser.UserName, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+            <TextBlock Text="Contraseña" Style="{StaticResource Textblock}"/>
+            <PasswordBox x:Name="Password" FontSize="24" BorderThickness="3"/>
+            <TextBlock Text="Conf. contraseña" Style="{StaticResource Textblock}"/>
+            <PasswordBox x:Name="ConfirmPassword" FontSize="24" BorderThickness="3"/>
+            <TextBlock Text="Nombre" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="Name" Text="{Binding CurrentUser.Name, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+            <TextBlock Text="Apellidos" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="LastNames" Text="{Binding CurrentUser.Surnames, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Width="300" Margin="50,20" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Text="Email" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="Email" Text="{Binding CurrentUser.Email, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+            <TextBlock Text="Teléfono" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="Phone" Text="{Binding CurrentUser.Phone, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+            <TextBlock Text="DNI" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="DNI" Text="{Binding CurrentUser.DNI, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+            <TextBlock Text="Número del IEEE" Style="{StaticResource Textblock}"/>
+            <TextBox x:Name="IEEEnumber" Text="{Binding CurrentUser.IEEEn, Mode=TwoWay}" Style="{StaticResource Textbox}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,0,0,20" >
+            <Button x:Name="Submit" Margin="0,0,0,20" Click="Submit_Click">
+                <Button.Content>
+                    <TextBlock Text="Registrar" FontSize="32" FontWeight="Bold" Margin="10"/>
+                </Button.Content>
+            </Button>
+            <ProgressBar x:Name="Working" Foreground="Blue" IsIndeterminate="True" Height="20" Visibility="{Binding Monitor.Working, Converter={StaticResource BooleanToVisibility}}" Orientation="Horizontal" Width="150"/>
+        </StackPanel>
+    </Grid>
+</Page>

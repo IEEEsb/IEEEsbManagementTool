@@ -1,0 +1,35 @@
+﻿<Page x:Class="IEEEsbUserManagement.Views.WelcomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="NewUser" Margin="20" Height="110" Width="250" Click="NewUser_Click">
+            <Button.Content>
+                <TextBlock Text="Nuevo Usuario" FontSize="32" FontWeight="Bold" Margin="10"/>
+            </Button.Content>
+        </Button>
+        <Button x:Name="AccessManagement" Grid.Column="1" Margin="20" Height="110" Width="250" Click="AccessManagement_Click">
+            <Button.Content>
+                <TextBlock Text="Control de Acceso" FontSize="32" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Margin="10"/>
+            </Button.Content>
+        </Button>
+        <Button x:Name="LatchManagement" Grid.Column="2" Margin="20" Height="110" Width="250" Click="LatchManagement_Click">
+            <Button.Content>
+                <TextBlock Text="Control de Latch" FontSize="32" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Margin="10"/>
+            </Button.Content>
+        </Button>
+        <Button x:Name="Log" Grid.Column="3" Margin="20" Height="110" Width="250" Click="Log_Click">
+            <Button.Content>
+                <TextBlock Text="Log" FontSize="32" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Margin="10"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>
